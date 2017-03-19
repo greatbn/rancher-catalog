@@ -1,0 +1,6 @@
+name: VC-Registry
+description: |
+  Secure Docker registry.  Web based administration.  Optional LDAP authentication.
+version: v2.3.1-3.1
+category: Applications
+maintainer: Sa Pham <sapd@vccloud.vn>
