@@ -65,7 +65,7 @@ lb:
   - registry:registry
   - sslproxy:sslproxy
 portus:
-  image: docker-registry.opscloud.xyz/sapd/portus:2.2.0
+  image: registry.opscloud.xyz/sapd/portus:2.2.0
   environment:
     PORTUS_MACHINE_FQDN: ${DOMAIN}
     PORTUS_PRODUCTION_HOST: db
