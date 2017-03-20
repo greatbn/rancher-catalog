@@ -16,6 +16,18 @@
       default: 443
       required: true
       type: "int"
+    - variable: "RCERT"
+      label: "Registry Certificates"
+      description: "Certificates for your registry"
+      default: "registry.crt"
+      required: true
+      type: "string"
+    - variable: "RPRIV_KEY"
+      label: "Registry Private key"
+      description: "Private key for your registry"
+      default: "registry.key"
+      required: true
+      type: "string"
     - variable: "DBPASSWORD"
       label: "DB Password"
       description: "Password for Portus database access, must be 8 characters or longer"
