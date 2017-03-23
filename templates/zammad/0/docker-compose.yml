@@ -1,7 +1,7 @@
 version: '2'
 volumes:
-  - ${VOLUME_NAME}:
-      driver: ${VOLUME_DRIVER}
+  $'{VOLUME_NAME}':
+    driver: ${VOLUME_DRIVER}
 services:
   zammad-scheduler:
     image: zammad/zammad-docker-compose:zammad-scheduler
