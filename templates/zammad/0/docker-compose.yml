@@ -1,0 +1,61 @@
+version: '2'
+volumes:
+  data-zammad:
+    driver: local
+services:
+  zammad-scheduler:
+    image: zammad/zammad-docker-compose:zammad-scheduler
+    links:
+      - zammad-postgresql:zammad-postgresql
+      - zammad:zammad
+      - zammad-elasticsearch:zammad-elasticsearch
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: ${NODE_LABEL}
+  zammad:
+    image: zammad/zammad-docker-compose:zammad
+    volumes:
+      - ${VOLUME_DIR}/data-zammad:/home/zammad
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${NODE_LABEL}
+      io.rancher.container.start_once: 'true'
+      io.rancher.container.pull_image: always
+  zammad-postgresql:
+    image: zammad/zammad-docker-compose:zammad-postgresql
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: ${NODE_LABEL}
+  zammad-nginx:
+    image: zammad/zammad-docker-compose:zammad-nginx
+    volumes:
+      - ${VOLUME_DIR}/data-zammad:/home/zammad
+    links:
+      - zammad-websocket:zammad-websocket
+      - zammad-railsserver:zammad-railsserver
+    ports:
+      - ${PORT}:80/tcp
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: ${NODE_LABEL}
+  zammad-railsserver:
+    image: zammad/zammad-docker-compose:zammad-railsserver
+    links:
+      - zammad-postgresql:zammad-postgresql
+      - zammad:zammad
+      - zammad-elasticsearch:zammad-elasticsearch
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: ${NODE_LABEL}
+  zammad-elasticsearch:
+    image: zammad/zammad-docker-compose:zammad-elasticsearch
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: ${NODE_LABEL}
+  zammad-websocket:
+    image: zammad/zammad-docker-compose:zammad-websocket
+    links:
+      - zammad-postgresql:zammad-postgresql
+      - zammad:zammad
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: ${NODE_LABEL}

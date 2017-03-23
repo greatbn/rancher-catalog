@@ -1,0 +1,36 @@
+.catalog:
+  name: "Zammad"
+  version: "v1.4.x"
+  description: "Zammad is a web-based, open source user support/ticketing solution."
+  uuid: zammad-1.4
+  questions:
+    - variable: "NODE_LABEL"
+      label: "Label of Node "
+      description: "Label of Node to scheduling all container to their host"
+      required: true
+      type: "string"
+    - variable: "VOLUME_DIR"
+      label: "Directory for data"
+      description: "Specify a directory to save data on host"
+      required: true
+      type: "string"
+    - variable: "PORT"
+      label: "Zammad Web UI Port"
+      description: "Specify a port for web ui listen on"
+      required: true
+      default: 80
+      type: int
+zammad:
+  scale: 1
+zammad-elasticsearch:
+  scale: 1
+zammad-nginx:
+  scale: 1
+zammad-postgresql:
+  scale: 1
+zammad-scheduler:
+  scale: 1
+zammad-railsserver:
+  scale: 1
+zammad-websocket:
+  scale: 1

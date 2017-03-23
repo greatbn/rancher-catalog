@@ -1,0 +1,6 @@
+name: Zammad
+description: |
+  Zammad is a web-based, open source user support/ticketing solution.
+version: 1.4.x
+category: Applications
+maintainer: Sa Pham <sapd@vccloud.vn>
