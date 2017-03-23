@@ -9,11 +9,18 @@
       description: "Label of Node to scheduling all container to their host"
       required: true
       type: "string"
-    - variable: "VOLUME_DIR"
-      label: "Directory for data"
-      description: "Specify a directory to save data on host"
+    - variable: "VOLUME_DRIVER"
+      label: "Volume Driver"
+      description: "Specify a volume driver for zammad data"
       required: true
       type: "string"
+      default: rancher-nfs
+    - variable: "VOLUME_NAME"
+      label: "Volume name"
+      description: "Specify a volume name for zammad data"
+      required: true
+      type: "string"
+      default: "zammad-data"
     - variable: "PORT"
       label: "Zammad Web UI Port"
       description: "Specify a port for web ui listen on"
