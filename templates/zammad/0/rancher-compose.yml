@@ -15,12 +15,6 @@
       required: true
       type: "string"
       default: rancher-nfs
-    - variable: "VOLUME_NAME"
-      label: "Volume name"
-      description: "Specify a volume name for zammad data"
-      required: true
-      type: "string"
-      default: "zammad-data"
     - variable: "PORT"
       label: "Zammad Web UI Port"
       description: "Specify a port for web ui listen on"
