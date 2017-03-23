@@ -1,6 +1,6 @@
 version: '2'
 volumes:
-  $'{VOLUME_NAME}':
+  VOLUME_NAME:
     driver: ${VOLUME_DRIVER}
 services:
   zammad-scheduler:
