@@ -15,7 +15,7 @@ services:
   zammad:
     image: zammad/zammad-docker-compose:zammad
     volumes:
-      - data-zammad:/home/zammad
+      - ${VOLUME_NAME}:/home/zammad
     labels:
       io.rancher.scheduler.affinity:host_label: ${NODE_LABEL}
       io.rancher.container.start_once: 'true'
@@ -28,7 +28,7 @@ services:
   zammad-nginx:
     image: zammad/zammad-docker-compose:zammad-nginx
     volumes:
-      - data-zammad:/home/zammad
+      - ${VOLUME_NAME}:/home/zammad
     links:
       - zammad-websocket:zammad-websocket
       - zammad-railsserver:zammad-railsserver
